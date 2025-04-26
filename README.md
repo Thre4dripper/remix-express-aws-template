@@ -116,8 +116,12 @@ Here are some useful commands to streamline development:
 
 This template is pre-configured for AWS Amplify.
 
-- Simply **push** your changes to the `main` branch.
-- The GitHub Actions workflow will trigger a new build and deployment to AWS Amplify.
+1. Create an AWS Amplify app and connect it to your GitHub repository.
+2. In the Amplify console, disable automatic builds.
+3. Create a new webhook in your GitHub repository settings and copy the URL.
+4. In your repository settings, create a new secret named `AMPLIFY_WEBHOOK_URL` and paste the webhook URL.
+5. Simply **push** your changes to the `main` branch.
+6. The GitHub Actions workflow will trigger a new build and deployment to AWS Amplify.
 
 You can customize the build process in the provided `amplify.yml` file.
 
