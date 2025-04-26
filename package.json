@@ -1,6 +1,6 @@
 {
-  "name": "express-amplify-test",
-  "private": true,
+  "name": "remix-express-aws-template",
+  "private": false,
   "sideEffects": false,
   "type": "module",
   "scripts": {

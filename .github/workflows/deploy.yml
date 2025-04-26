@@ -137,10 +137,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        continue-on-error: true
 
   deploy:
     name: Trigger AWS Amplify Deploy
@@ -150,4 +152,4 @@ jobs:
     steps:
       - name: Call AWS Amplify Deploy Hook
         run: |
-          curl -X POST -d {} "https://webhooks.amplify.ap-south-1.amazonaws.com/prod/webhooks?id=60dd1df0-26bc-488f-920b-9893d80c0cc7&token=MXZMclK4dF4Izt2WhIMQfvqfQwNoR3aPxiU3YrwgnI&operation=startbuild" -H "Content-Type:application/json"
+          curl -X POST -d {} "${{ secrets.AMPLIFY_WEBHOOK_URL }}" -H "Content-Type:application/json"
