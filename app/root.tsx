@@ -1,26 +1,16 @@
+import './tailwind.css'
+import { type LinksFunction } from '@remix-run/node'
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+} from '@remix-run/react'
+import DefaultErrorBoundary from '~/components/error-boundary.tsx'
+import { useEffect } from 'react'
 
-import "./tailwind.css";
-
-export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
+export const links: LinksFunction = () => []
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -31,15 +21,41 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
-  );
+  )
 }
 
 export default function App() {
-  return <Outlet />;
+  useEffect(() => {
+    // Suppressing this warning because it's a bug in Remix
+    const originalWarn = console.error
+    console.error = (...args) => {
+      if (
+        typeof args[0] === 'string' &&
+        args[0].includes('Accessing element.ref was removed in React 19')
+      ) {
+        return
+      }
+      originalWarn(...args)
+    }
+  }, [])
+
+  return <Outlet />
+}
+
+export function ErrorBoundary() {
+  return <DefaultErrorBoundary />
+}
+
+export function CatchBoundary() {
+  return <h1>Something went wrong</h1>
+}
+
+export function HydrateFallback() {
+  return <h1>Loading...</h1>
 }
