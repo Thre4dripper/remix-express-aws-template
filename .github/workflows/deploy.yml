@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+    types: [opened, synchronize, reopened]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -104,10 +105,23 @@ jobs:
           path: playwright-report/
           retention-days: 1
 
+  sonarqube:
+    name: SonarQube
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   deploy:
-    name: Deploy to AWS Amplify
+    name: Trigger AWS Amplify Deploy
     runs-on: ubuntu-latest
-    needs: [eslint, typecheck, vitest, playwright]
+    needs: [eslint, typecheck, vitest, playwright, sonarqube]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Call AWS Amplify Deploy Hook
         run: |
