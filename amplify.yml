@@ -19,5 +19,5 @@ frontend:
         - cp deploy-manifest.json .amplify-hosting/deploy-manifest.json
   artifacts:
     files:
-      - "**/*"
+      - '**/*'
     baseDirectory: .amplify-hosting

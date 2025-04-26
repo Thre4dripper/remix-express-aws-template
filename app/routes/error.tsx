@@ -75,7 +75,7 @@ function Layout({ children }: { children?: React.ReactNode }) {
         </Link>
         <Link
           to="?type=badrequest"
-          className="rounded bg-yellow-200 px-2 py-1  text-yellow-900"
+          className="rounded bg-yellow-200 px-2 py-1 text-yellow-900"
         >
           Return Bad Request Error
         </Link>

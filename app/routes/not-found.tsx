@@ -17,7 +17,9 @@ const NotFound = () => {
         <h1 className="neon-text text-8xl font-extrabold tracking-wide text-white">
           404
         </h1>
-        <p className="mt-4 text-xl text-gray-300">You’ve entered the wrong place.</p>
+        <p className="mt-4 text-xl text-gray-300">
+          You’ve entered the wrong place.
+        </p>
         <p className="text-md mt-2 text-gray-400">
           This page has been lost in cyberspace.
         </p>

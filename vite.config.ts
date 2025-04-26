@@ -1,8 +1,8 @@
-import { vitePlugin as remix } from "@remix-run/dev";
-import morgan from "morgan";
-import { remixDevTools } from "remix-development-tools";
-import { defineConfig, type ViteDevServer } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { vitePlugin as remix } from '@remix-run/dev'
+import morgan from 'morgan'
+import { remixDevTools } from 'remix-development-tools'
+import { defineConfig, type ViteDevServer } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   build: { manifest: true },
@@ -11,16 +11,16 @@ export default defineConfig({
     remixDevTools(),
     tsconfigPaths(),
     remix({
-      ignoredRouteFiles: ["**/*"],
-      serverModuleFormat: "esm",
-      routes: async (defineRoutes) => {
-        return defineRoutes((route) => {
-          route("/", "routes/_index.tsx");
-          route("/counter", "routes/counter.tsx");
-          route("/healthcheck", "routes/healthcheck.tsx");
-          route("/error", "routes/error.tsx");
-          route("*", "routes/not-found.tsx");
-        });
+      ignoredRouteFiles: ['**/*'],
+      serverModuleFormat: 'esm',
+      routes: async defineRoutes => {
+        return defineRoutes(route => {
+          route('/', 'routes/_index.tsx')
+          route('/counter', 'routes/counter.tsx')
+          route('/healthcheck', 'routes/healthcheck.tsx')
+          route('/error', 'routes/error.tsx')
+          route('*', 'routes/not-found.tsx')
+        })
       },
       future: {
         v3_fetcherPersist: true,
@@ -31,15 +31,15 @@ export default defineConfig({
       },
     }),
   ],
-});
+})
 
 function morganPlugin() {
   return {
-    name: "morgan-plugin",
+    name: 'morgan-plugin',
     configureServer(server: ViteDevServer) {
       return () => {
-        server.middlewares.use(morgan("tiny"));
-      };
+        server.middlewares.use(morgan('tiny'))
+      }
     },
-  };
+  }
 }

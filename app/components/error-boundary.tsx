@@ -14,7 +14,6 @@ export default function DefaultErrorBoundary() {
     <>
       <div className="m-2 rounded bg-red-100 p-4">
         <h1 className="font-bolder mb-1 inline-flex items-center gap-4 text-2xl text-red-900">
-
           {message || 'App Error'}
         </h1>
         <p className="mb-1 text-lg">
@@ -24,7 +23,7 @@ export default function DefaultErrorBoundary() {
       </div>
       {stack && (
         <div className="my-4 w-[95%] bg-white p-4 text-black">
-          <pre className="max-w-full overflow-auto ">{stack}</pre>
+          <pre className="max-w-full overflow-auto">{stack}</pre>
           <p className="mt-4 italic text-red-500">
             Stack trace only displayed in DEVELOPMENT
           </p>
@@ -67,7 +66,6 @@ function Unauthorized({ message, data }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-purple-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-purple-900">
-
         {message || 'Unauthorized'}
       </h1>
       <p className="mb-1 text-lg">
@@ -88,7 +86,6 @@ function BadRequest({
   return (
     <div className="m-2 rounded bg-yellow-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-red-900">
-
         {message || 'Bad Request'}
       </h1>
       <p className="mb-1 text-lg">
@@ -109,7 +106,6 @@ function Invalid({ message, data }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-yellow-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-red-900">
-
         {message || 'Invalid'}
       </h1>
       <p className="mb-1 text-lg">You made an invalid request.</p>
@@ -121,7 +117,6 @@ function Forbidden({ message, data }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-orange-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-orange-900">
-
         {message || 'Not Authorized'}
       </h1>
       <p className="mb-1 text-lg">
@@ -135,7 +130,6 @@ function NotFound({ message, data }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-blue-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-blue-900">
-
         {message || 'Not Found'}
       </h1>
       <p className="mb-1 text-lg">
