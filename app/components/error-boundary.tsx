@@ -62,7 +62,7 @@ function CatchBoundary({ caught }: { caught: ErrorResponse }) {
   }
 }
 
-function Unauthorized({ message, data }: { message: string; data: any }) {
+function Unauthorized({ message }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-purple-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-purple-900">
@@ -102,7 +102,7 @@ function BadRequest({
   )
 }
 
-function Invalid({ message, data }: { message: string; data: any }) {
+function Invalid({ message }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-yellow-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-red-900">
@@ -113,7 +113,7 @@ function Invalid({ message, data }: { message: string; data: any }) {
   )
 }
 
-function Forbidden({ message, data }: { message: string; data: any }) {
+function Forbidden({ message }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-orange-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-orange-900">
@@ -126,7 +126,7 @@ function Forbidden({ message, data }: { message: string; data: any }) {
   )
 }
 
-function NotFound({ message, data }: { message: string; data: any }) {
+function NotFound({ message }: { message: string; data: any }) {
   return (
     <div className="m-2 rounded bg-blue-100 p-4">
       <h1 className="font-bolder mb-1 inline-flex items-center gap-2 text-2xl text-blue-900">

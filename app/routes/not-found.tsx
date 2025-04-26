@@ -1,5 +1,3 @@
-import React from 'react'
-
 const NotFound = () => {
   return (
     <div className="relative flex h-screen items-center justify-center overflow-hidden bg-black">

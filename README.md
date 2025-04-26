@@ -90,10 +90,11 @@ sonar.organization=your-organization
 ```
 
 5. Replace `your-project-key` and `your-organization` with your actual SonarQube project key and organization.
-6. Push your changes to the `main` branch.
-7. The GitHub Actions workflow will automatically run SonarQube analysis on each push to the `main` branch and PRs.
-8. You can view the results in your SonarQube dashboard.
-9. (Optional) Customize the `sonar-project.properties` file to include/exclude specific files or directories from analysis.
+6. Uncomment sonar scanning code `deploy.yml` file.
+7. Push your changes to the `main` branch.
+8. The GitHub Actions workflow will automatically run SonarQube analysis on each push to the `main` branch and PRs.
+9. You can view the results in your SonarQube dashboard.
+10. (Optional) Customize the `sonar-project.properties` file to include/exclude specific files or directories from analysis.
 
 ## Additional Scripts
 
